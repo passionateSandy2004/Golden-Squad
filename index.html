@@ -10,22 +10,58 @@
         .expandable {
           max-height: 0;
           overflow: hidden;
-          transition: max-height 0.5s ease-out;
+          transition: max-height 0.3s ease, padding 0.3s ease;
         }
-        .hover-trigger:hover .expandable {
-          max-height: 300px; /* Adjust as needed for content */
-          background-color: black;
+        .expandable-active {
+          max-height: 500px; /* Adjust as needed */
+          padding: 1rem;
+        }
+        .hover-trigger button {
+          transition: transform 0.6s ease;
+          justify-content: center; /* Center the content horizontally */
+          align-items: center; 
+        }
+        .hover-trigger button:hover {
+          transform: scale(1.05);
+        }
+        .icon {
+          transition: transform 0.3s ease;
+        }
+        .icon-active {
+          transform: rotate(180deg);
+        }
+        .horizontal {
+          display: flex;
+          justify-content: space-around;
+        }
+        .hover-trigger {
+          transition: flex 0.6s ease, height 0.6s ease, width 0.6s ease;
+        }
+        .hover-trigger-active {
+          flex: 1 1 100%;
+          height: auto;
+          width: 100%;
+        }
+        .container-vertical {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .hidden {
+          display: none;
         }
     </style>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body class="bg-gray-100 text-gray-800 ">
 
     <!-- Header -->
     <header class="bg-yellow-500 text-white p-4">
-        <div class="container mx-auto text-center">
-            <h1 class="text-4xl font-bold">Golden Squad</h1>
+        <div class="container mx-auto">
+            <h1 class="text-3xl font-bold">Golden Squad</h1>
             <p class="mt-2 text-lg">Transforming students into industrial-standard developers.</p>
         </div>
+        
     </header>
 
     <!-- Goals Section -->
@@ -38,8 +74,8 @@
             <div class="bg-white text-black opacity-60 shadow-lg hover:opacity-100 hover:bg-yellow-400 rounded-lg py-2 px-4">
                 <h3 class="text-2xl font-semibold mt-4 text-center mb-4">Specific Objectives:</h3>
                 <ul class="list-disc pl-6 mb-4">
-                    <li>Provide comprehensive training in open-source technologies and industry-standard tools.</li>
-                    <li>Ensure students gain real-world experience through internships with startups and established companies.</li>
+                    <li>Provide comprehensive training with open-source resources and industry-standard tools.</li>
+                    <li>Ensure students gain real-world experience through internships in startups and established companies.</li>
                     <li>Facilitate the development of professional portfolios by working on real-time projects from industry partners.</li>
                     <li>Prepare students to meet and exceed industry standards, making them highly desirable candidates for employment.</li>
                 </ul>
@@ -47,14 +83,14 @@
             <div class="bg-white text-black opacity-60 shadow-lg hover:opacity-100 hover:bg-yellow-400 rounded-lg py-2 px-4">
                 <h3 class="text-2xl font-semibold mt-4 text-center mb-4">Benefits for Students:</h3>
                 <ul class="list-disc pl-6 mb-4">
-                    <li>Access to cutting-edge training materials and resources.</li>
+                    <li>Access to training materials and resources.</li>
                     <li>Opportunities to work on diverse projects and build a strong professional network.</li>
-                    <li>Mentorship and guidance from experienced professionals in the field.</li>
+                    <li>Mentorship and guidance from professionals in the field.</li>
                     <li>Paid internships and project work that recognize and reward quality contributions.</li>
                 </ul>
             </div>
             <div class="bg-white text-black opacity-60 shadow-lg hover:opacity-100 hover:bg-yellow-400 rounded-lg py-2 px-4">
-                <h3 class="text-2xl font-semibold mt-4 text-center mb-4">Value to Businesses:</h3>
+                <h3 class="text-2xl font-semibold mt-4 text-center mb-4">Connecting to Businesses:</h3>
                 <ul class="list-disc pl-6 mb-4">
                     <li>Receive high-quality, innovative solutions tailored to your business needs.</li>
                     <li>Collaborate with a team of passionate and skilled developers who are up-to-date with the latest technologies.</li>
@@ -65,13 +101,13 @@
             <div class="bg-white text-black opacity-60 shadow-lg hover:opacity-100 hover:bg-yellow-400 rounded-lg py-2 px-4">
                 <h3 class="text-2xl font-semibold mt-4 text-center">Mentorship Programs:</h3>
                 <p class="text-lg m-4 text-center">
-                    Each student is paired with an industry mentor who provides guidance, feedback, and support throughout their training and project work. This mentorship ensures that students gain valuable insights and professional connections.
+                    Each student is paired with a mentor who provides guidance, feedback, and support throughout their training and project work. This mentorship ensures that students gain valuable insights and professional connections.
                 </p>
             </div>
             <div class="bg-white text-black opacity-60 shadow-lg hover:opacity-100 hover:bg-yellow-400 rounded-lg py-2 px-4">
                 <h3 class="text-2xl font-semibold mt-4 text-center">Community and Networking:</h3>
                 <p class="text-lg m-4 text-center">
-                    We foster a strong sense of community through team-building activities, workshops, and networking events. Students have the opportunity to collaborate, share knowledge, and connect with industry professionals.
+                    We foster a strong sense of community through team-building activities, and networking events. Students have the opportunity to collaborate, share knowledge, and connect with industry professionals.
                 </p>
             </div>
             <div class="bg-white text-black opacity-60 shadow-lg hover:opacity-100 hover:bg-yellow-400 rounded-lg py-2 px-4">
@@ -84,42 +120,42 @@
     </section>
 
     <!--Field of Focus-->
-    <div class="p-4">
-        <div class="mb-8">
-          <h2 class="text-3xl font-bold mb-4 text-center">Field Of Focus</h2>
-          <div class="flex justify-center">
-            <div class="w-full max-w-md">
-              <div class="bg-white shadow-md rounded-lg overflow-hidden w-full">
-                <div class="hover-trigger">
-                  <button class="w-full py-2 px-4 text-center bg-yellow-400 text-white focus:outline-none">
-                    AR VR And Game Development in Unity
-                  </button>
-                  <div class="expandable p-4 bg-white">
-                    <p class="text-white text-center">
-                        In our Unity 3D training, we'll start with the basics of 3D game development, covering the Unity interface, game objects, and scene creation. You'll master C# scripting to build interactive game mechanics and develop efficient, well-organized code. We'll also delve into augmented reality development using Unity's AR Foundation, learning to create immersive AR applications. By the end, you'll be equipped to build both 3D games and AR experiences.</p>
-                  </div>
-                </div>
-                <div class="hover-trigger">
-                    <button class="w-full py-2 px-4 text-center bg-yellow-400 text-white focus:outline-none">
-                      Web Development
-                    </button>
-                    <div class="expandable p-4 bg-white">
-                      <p class="text-white text-center">In our web development training, we'll begin with the basics of HTML and CSS, including Tailwind CSS, to create structured and styled web pages. You'll learn JavaScript for interactive and dynamic content. We'll cover various aspects of web development, including responsive design, web frameworks, and best practices. By the end, you'll be equipped to build modern, responsive websites with a strong foundation in front-end development.</p>
-                    </div>
-                </div>
-                <div class="hover-trigger">
-                    <button class="w-full py-2 px-4 text-center bg-yellow-400 text-white focus:outline-none">
-                      AI with Python
-                    </button>
-                    <div class="expandable p-4 bg-white">
-                      <p class="text-white text-center text-wrap">In our AI with Python training, we'll start with Python basics and move on to machine learning techniques like supervised, unsupervised, and reinforcement learning. We'll delve into neural networks, their structure, and functionality, and you'll build and train them using TensorFlow and PyTorch. We'll also use OpenCV for real-world AI projects, such as image recognition and object detection. By the end, you'll have a solid foundation in AI and machine learning, ready to tackle practical problems with advanced techniques.</p>
-                    </div>
-                </div>
-              </div>
+    <div class="m-8">
+        <h2 class="text-4xl font-extrabold mb-6 text-center text-black">Field Of Focus</h2>
+        <div id="container" class="horizontal">
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden m-4 transform transition-transform duration-300 hover-trigger">
+            <button class="w-full py-3 px-5 text-center bg-yellow-500 text-white font-bold flex justify-between items-center">
+              AR VR And Game Development in Unity
+            </button>
+            <div class="expandable p-4 bg-yellow-100 rounded-b-lg">
+              <p class="text-gray-800 text-center">
+                In our Unity 3D training, we'll start with the basics of 3D game development, covering the Unity interface, game objects, and scene creation. You'll master C# scripting to build interactive game mechanics and develop efficient, well-organized code. We'll also delve into augmented reality development using Unity's AR Foundation, learning to create immersive AR applications. By the end, you'll be equipped to build both 3D games and AR experiences.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden m-4 transform transition-transform duration-300 hover-trigger">
+            <button class="w-full py-3 px-5 text-center bg-yellow-500 text-white font-bold flex justify-between items-center">
+              Web Development
+            </button>
+            <div class="expandable p-4 bg-yellow-100 rounded-b-lg">
+              <p class="text-gray-800 text-center">
+                In our web development training, we'll begin with the basics of HTML and CSS, including Tailwind CSS, to create structured and styled web pages. You'll learn JavaScript for interactive and dynamic content. We'll cover various aspects of web development, including responsive design, web frameworks, and best practices. By the end, you'll be equipped to build modern, responsive websites with a strong foundation in front-end development.
+              </p>
+            </div>
+          </div>
+          <div class="bg-white shadow-lg rounded-lg overflow-hidden m-4 transform transition-transform duration-300 hover-trigger">
+            <button class="w-full py-3 px-5 text-center bg-yellow-500 text-white font-bold flex justify-between items-center">
+              AI with Python
+            </button>
+            <div class="expandable p-4 bg-yellow-100 rounded-b-lg">
+              <p class="text-gray-800 text-center">
+                In our AI with Python training, we'll start with Python basics and move on to machine learning techniques like supervised, unsupervised, and reinforcement learning. We'll delve into neural networks, their structure, and functionality, and you'll build and train them using TensorFlow and PyTorch. We'll also use OpenCV for real-world AI projects, such as image recognition and object detection. By the end, you'll have a solid foundation in AI and machine learning, ready to tackle practical problems with advanced techniques.
+              </p>
             </div>
           </div>
         </div>
     </div>
+      
 
     <!-- Training Process Section -->
     <div class="my-6 m-10 bg-yellow-400 rounded-lg">
@@ -175,7 +211,7 @@
     </div>
 
     <!-- Apply Section -->
-    <section class="bg-white p-6 mt-6">
+    <section class="bg-white py-6 mt-6">
         <div class="container mx-auto">
             <h2 class="text-3xl font-bold mb-4">Join Our Team</h2>
             <p class="text-lg mb-4">Eligibility:</p>
@@ -184,12 +220,12 @@
                 <li>Good communication skills</li>
                 <li>Ability to manage studies and projects simultaneously</li>
             </ul>
-            <a href="https://forms.gle/kCKLgPgmBYfGgB3H9" target="_blank" class="bg-yellow-500 text-white px-4 py-2 rounded">Apply Now</a>
+            <a href="https://forms.gle/EYaJzDbptDrqUnri7" target="_blank" class="bg-yellow-500 text-white px-4 py-2 rounded">Apply Now</a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="container mx-auto p-6 mt-6">
+    <section class="container mx-auto py-6 mt-6">
         <h2 class="text-3xl font-bold mb-4">Get Our Services</h2>
         <p class="text-lg mb-4">Transform your business with our innovative solutions in AR/VR, 3D modeling, and web development.</p>
         <a href="#" class="bg-yellow-500 text-white px-4 py-2 rounded">Request Service</a>
@@ -201,6 +237,25 @@
             <p>&copy; 2024 Golden Squad. All rights reserved.</p>
         </div>
     </footer>
+    <script>
+        const container = document.getElementById('container');
+        const boxes = document.querySelectorAll('.hover-trigger');
+    
+        boxes.forEach(box => {
+          box.addEventListener('mouseover', () => {
+            boxes.forEach(b => b.classList.add('hidden'));
+            box.classList.remove('hidden');
+            box.querySelector('.expandable').classList.add('expandable-active');
+          });
+    
+          box.addEventListener('mouseleave', () => {
+            boxes.forEach(b => {
+              b.classList.remove('hidden');
+              b.querySelector('.expandable').classList.remove('expandable-active');
+            });
+          });
+        });
+    </script>
 
 </body>
 </html>
